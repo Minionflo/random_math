@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        function gen() {
+            var text = document.getElementById('math');
+            var result_text = document.getElementById('result');
+            var right = document.getElementById('right');
+            var textarea = document.getElementById('textarea');
+            var one = Math.floor(Math.random() * 10)
+            var two = Math.floor(Math.random() * 10)
+            text.innerText = one + ' * ' + two
+            right.innerText = "Check: "
+            result_text.innerText = "Result: "
+            textarea.value = ""
+        }
+        function result() {
+            var text = document.getElementById('math');
+            var result_text = document.getElementById('result');
+            var textarea = document.getElementById('textarea');
+            var right = document.getElementById('right');
+            var one = text.innerText.split('*')[0]
+            var two = text.innerText.split('*')[1]
+            var result = one * two
+            result_text.innerText = "Result: " + result
+        }
+        function check() {
+            var text = document.getElementById('math');
+            var result_text = document.getElementById('result');
+            var textarea = document.getElementById('textarea');
+            var right = document.getElementById('right');
+            var one = text.innerText.split('*')[0]
+            var two = text.innerText.split('*')[1]
+            var result = one * two
+            if(result == parseInt(textarea.value)) {
+                right.innerText = "Check: Right!"
+            } else {
+                right.innerText = "Check: Wrong!"
+            }
+        }
+    </script>
+    <h1 id="math">0*0</h1>
+    <h1 id="right">Check: </h1>
+    <h1 id="result">Result: </h1>
+    <textarea id="textarea"></textarea>
+    <br>
+    <button id="gen_button" onclick="gen()">generate</button>
+    <button id="result_button" onclick="result()">Result</button>
+    <button id="check" onclick="check()">Check</button>
+</body>
+</html>
